@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<w:styles xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main">
+    <w:style w:type="paragraph" w:styleId="Header">
+        <w:name w:val="header"/>
+        <w:basedOn w:val="Normal"/>
+        <w:link w:val="HeaderChar"/>
+        <w:uiPriority w:val="99"/>
+        <w:unhideWhenUsed/>
+        <w:pPr>
+            <w:tabs>
+                <w:tab w:val="center" w:pos="4844"/>
+                <w:tab w:val="right" w:pos="9689"/>
+            </w:tabs>
+            <w:spacing w:after="0" w:line="240" w:lineRule="auto"/>
+        </w:pPr>
+    </w:style>
+
+    <w:style w:type="character" w:customStyle="1" w:styleId="HeaderChar">
+        <w:name w:val="Header Char"/>
+        <w:basedOn w:val="DefaultParagraphFont"/>
+        <w:link w:val="Header"/>
+        <w:uiPriority w:val="99"/>
+    </w:style>
+
+    <w:style w:type="paragraph" w:styleId="Footer">
+        <w:name w:val="footer"/>
+        <w:basedOn w:val="Normal"/>
+        <w:link w:val="FooterChar"/>
+        <w:uiPriority w:val="99"/>
+        <w:unhideWhenUsed/>
+        <w:pPr>
+            <w:tabs>
+                <w:tab w:val="center" w:pos="4844"/>
+                <w:tab w:val="right" w:pos="9689"/>
+            </w:tabs>
+            <w:spacing w:after="0" w:line="240" w:lineRule="auto"/>
+        </w:pPr>
+    </w:style>
+
+    <w:style w:type="character" w:customStyle="1" w:styleId="FooterChar">
+        <w:name w:val="Footer Char"/>
+        <w:basedOn w:val="DefaultParagraphFont"/>
+        <w:link w:val="Footer"/>
+        <w:uiPriority w:val="99"/>
+    </w:style>
+
+    <w:style w:type="table" w:styleId="TableGrid">
+        <w:name w:val="Table Grid" />
+        <w:basedOn w:val="TableNormal" />
+        <w:uiPriority w:val="59" />
+        <w:rsid w:val="008D0119" />
+        <w:pPr>
+            <w:spacing w:after="0" w:line="240" w:lineRule="auto" />
+        </w:pPr>
+        <w:tblPr>
+            <w:tblInd w:w="0" w:type="dxa" />
+            <w:tblBorders>
+                <w:top w:val="single" w:sz="4" w:space="0" w:color="000000" w:themeColor="text1" />
+                <w:left w:val="single" w:sz="4" w:space="0" w:color="000000" w:themeColor="text1" />
+                <w:bottom w:val="single" w:sz="4" w:space="0" w:color="000000" w:themeColor="text1" />
+                <w:right w:val="single" w:sz="4" w:space="0" w:color="000000" w:themeColor="text1" />
+                <w:insideH w:val="single" w:sz="4" w:space="0" w:color="000000" w:themeColor="text1" />
+                <w:insideV w:val="single" w:sz="4" w:space="0" w:color="000000" w:themeColor="text1" />
+            </w:tblBorders>
+            <w:tblCellMar>
+                <w:top w:w="0" w:type="dxa" />
+                <w:left w:w="108" w:type="dxa" />
+                <w:bottom w:w="0" w:type="dxa" />
+                <w:right w:w="108" w:type="dxa" />
+            </w:tblCellMar>
+        </w:tblPr>
+    </w:style>
+</w:styles>

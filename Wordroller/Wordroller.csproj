@@ -1,0 +1,31 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>netstandard2.0</TargetFramework>
+        <LangVersion>8</LangVersion>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="System.IO.Packaging" Version="4.7.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Remove="Xml\Defaults\deafult_table_styles.xml" />
+      <None Remove="Xml\Defaults\document.xml" />
+      <None Remove="Xml\Defaults\numbering.xml" />
+      <None Remove="Xml\Defaults\settings.xml" />
+      <None Remove="Xml\Defaults\styles.xml" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <EmbeddedResource Include="Packages\Defaults\document.xml" />
+      <EmbeddedResource Include="Packages\Defaults\footer.xml" />
+      <EmbeddedResource Include="Packages\Defaults\header.xml" />
+      <EmbeddedResource Include="Packages\Defaults\numbering.xml" />
+      <EmbeddedResource Include="Packages\Defaults\settings.xml" />
+      <EmbeddedResource Include="Packages\Defaults\styles.xml" />
+      <EmbeddedResource Include="Styles\Resources\DefaultOnDemandStyles.xml" />
+    </ItemGroup>
+
+</Project>

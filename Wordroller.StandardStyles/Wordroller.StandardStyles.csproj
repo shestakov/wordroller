@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>netstandard2.0</TargetFramework>
+        <LangVersion>8</LangVersion>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <EmbeddedResource Include="Resources\StandardTableStyles.xml" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Wordroller\Wordroller.csproj" />
+    </ItemGroup>
+
+</Project>
