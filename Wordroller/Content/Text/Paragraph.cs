@@ -106,7 +106,7 @@ namespace Wordroller.Content.Text
 		public void AppendTextBreak(TextBreakType type = TextBreakType.TextWrapping, TextBreakClear clear = TextBreakClear.None)
 		{
 			var br = TextBreak.Create(type, clear);
-			var run = new XElement(XName.Get("r", Namespaces.w.NamespaceName), br); // TODO: Should append to the last run here
+			var run = new XElement(XName.Get("r", Namespaces.w.NamespaceName), br.Xml); // TODO: Should append to the last run here
 			Xml.Add(run);
 		}
 
