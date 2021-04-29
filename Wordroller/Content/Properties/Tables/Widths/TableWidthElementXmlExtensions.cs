@@ -53,7 +53,7 @@ namespace Wordroller.Content.Properties.Tables.Widths
 			if (value == null)
 				SetTableWidthAttributes(xml, name, null, TableWidthUnit.Auto);
 			else if (value == 0)
-				SetTableWidthAttributes(xml, name, 0, TableWidthUnit.Nil);
+				SetTableWidthAttributes(xml, name, 0, TableWidthUnit.Dxa); // Was set to Nil according to spec, yet it is ignored in Word 2016
 			else
 				SetTableWidthAttributes(xml, name, value, TableWidthUnit.Dxa);
 		}
