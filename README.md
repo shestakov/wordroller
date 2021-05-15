@@ -58,6 +58,7 @@ Wordroller is a smaller library than the original DocX. While I initially intend
 - Equations
 - Bookmarks
 - Hyperlinks
+- ~~Fields~~ Basic support for complex fields had been added
 - Editing core properties
 - Editing custom properties
 
@@ -69,6 +70,7 @@ Wordroller is a smaller library than the original DocX. While I initially intend
 - Numbering (list definitions, actual lists, including paragraphs into lists)
 - All kinds of headers and footers
 - Basic support for styles
+- **Basic support for complex fields, primarily PAGE and NUMPAGES.**
 
 ## Q&A
 
