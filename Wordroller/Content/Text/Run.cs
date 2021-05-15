@@ -53,6 +53,34 @@ namespace Wordroller.Content.Text
 			return softHyphen;
 		}
 
+		public FieldCharacter AddFieldBeginning()
+		{
+			var fieldCharacter = FieldCharacter.Create(FieldCharacterType.Begin);
+			Xml.Add(fieldCharacter.Xml);
+			return fieldCharacter;
+		}
+
+		public FieldInstructionText AddFieldInstruction(FieldType fieldType, string formatString)
+		{
+			var fieldInstructionText = FieldInstructionText.Create(fieldType, formatString);
+			Xml.Add(fieldInstructionText.Xml);
+			return fieldInstructionText;
+		}
+
+		public FieldCharacter AddFieldSeparator()
+		{
+			var fieldCharacter = FieldCharacter.Create(FieldCharacterType.Separate);
+			Xml.Add(fieldCharacter.Xml);
+			return fieldCharacter;
+		}
+
+		public FieldCharacter AddFieldEnd()
+		{
+			var fieldCharacter = FieldCharacter.Create(FieldCharacterType.End);
+			Xml.Add(fieldCharacter.Xml);
+			return fieldCharacter;
+		}
+
 		public NoBreakHyphen AddNoBreakHyphen()
 		{
 			var noBreakHyphen = NoBreakHyphen.Create();
@@ -88,6 +116,8 @@ namespace Wordroller.Content.Text
 						"tab" => new Tab(e),
 						"drawing" => new RunDrawing(e, contentContainer),
 						"delText" => null, // TODO: maybe some day...
+						"fldChar" => new FieldCharacter(e),
+						"instrText" => new FieldInstructionText(e),
 						_ => null
 					};
 
@@ -96,6 +126,12 @@ namespace Wordroller.Content.Text
 					yield return item;
 				}
 			}
+		}
+
+		internal static Run CreateEmpty(DocumentContentContainer contentContainer)
+		{
+			var xml = new XElement(Namespaces.w + "r");
+			return new Run(xml, contentContainer);
 		}
 
 		internal static Run Create(string text, DocumentContentContainer contentContainer)

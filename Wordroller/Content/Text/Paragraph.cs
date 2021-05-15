@@ -5,6 +5,7 @@ using System.Text;
 using System.Xml.Linq;
 using Wordroller.Content.Abstract;
 using Wordroller.Content.Drawings;
+using Wordroller.Content.Fields;
 using Wordroller.Content.Lists;
 using Wordroller.Content.Properties.Paragraphs;
 using Wordroller.Content.Properties.Sections;
@@ -53,6 +54,68 @@ namespace Wordroller.Content.Text
 			var run = Run.Create(text, ParentContainer);
 			Xml.Add(run.Xml);
 			return run;
+		}
+
+		public void AppendCurrentPageNumber(string numericFormatting)
+		{
+			AppendComplexField(FieldType.NumPages, "", $"\\# \"{numericFormatting}\"", false, true, Run.Create(" ", ParentContainer));
+		}
+
+		public void AppendCurrentPageNumber(NumberFormat numberFormat)
+		{
+			AppendComplexField(FieldType.NumPages, "", $"\\* {GeneralFormattingSwitchHelper.GetSwitch(numberFormat)}", false, true, Run.Create(" ", ParentContainer));
+		}
+
+		public void AppendCurrentPageNumber(CommonFieldGeneralFormatting formatting)
+		{
+			AppendComplexField(FieldType.NumPages, "", $"\\* {GeneralFormattingSwitchHelper.GetSwitch(formatting)}", false, true, Run.Create(" ", ParentContainer));
+		}
+
+		public void AppendCurrentPageNumber(SpecialEastAsiaFieldGeneralFormatting formatting)
+		{
+			AppendComplexField(FieldType.NumPages, "", $"\\* {GeneralFormattingSwitchHelper.GetSwitch(formatting)}", false, true, Run.Create(" ", ParentContainer));
+		}
+
+		public void AppendNumberOfDocumentPages(string numericFormatting)
+		{
+			AppendComplexField(FieldType.NumPages, "", $"\\# \"{numericFormatting}\"", false, true, Run.Create(" ", ParentContainer));
+		}
+
+		public void AppendNumberOfDocumentPages(NumberFormat numberFormat)
+		{
+			AppendComplexField(FieldType.NumPages, "", $"\\* {GeneralFormattingSwitchHelper.GetSwitch(numberFormat)}", false, true, Run.Create(" ", ParentContainer));
+		}
+
+		public void AppendNumberOfDocumentPages(CommonFieldGeneralFormatting formatting)
+		{
+			AppendComplexField(FieldType.NumPages, "", $"\\* {GeneralFormattingSwitchHelper.GetSwitch(formatting)}", false, true, Run.Create(" ", ParentContainer));
+		}
+
+		public void AppendNumberOfDocumentPages(SpecialEastAsiaFieldGeneralFormatting formatting)
+		{
+			AppendComplexField(FieldType.NumPages, "", $"\\* {GeneralFormattingSwitchHelper.GetSwitch(formatting)}", false, true, Run.Create(" ", ParentContainer));
+		}
+
+		public void AppendComplexField(FieldType fieldType, string fieldSpecificSwitches, string formattingSwitches, bool charFormat, bool mergeFormat, params Run[] content)
+		{
+			var beginning = Run.CreateEmpty(ParentContainer);
+			beginning.AddFieldBeginning();
+
+			var instruction = Run.CreateEmpty(ParentContainer);
+			var switches = (!string.IsNullOrEmpty(fieldSpecificSwitches) ? fieldSpecificSwitches : "") + (!string.IsNullOrEmpty(formattingSwitches) ? " " + formattingSwitches : "") + (charFormat ? " \\* CHARFORMAT " : "") + (mergeFormat ? " \\* MERGEFORMAT " : "");
+			instruction.AddFieldInstruction(fieldType, switches);
+
+			var separator = Run.CreateEmpty(ParentContainer);
+			separator.AddFieldSeparator();
+
+			var end = Run.CreateEmpty(ParentContainer);
+			end.AddFieldEnd();
+
+			var children = new[] { beginning.Xml, instruction.Xml, separator.Xml }
+				.Union(content.Select(r => r.Xml))
+				.Union(new[] { end.Xml });
+
+			Xml.Add(children);
 		}
 
 		public Run AppendPicture(InlinePicture inlinePicture)
