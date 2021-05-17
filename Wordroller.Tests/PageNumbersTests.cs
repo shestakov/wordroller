@@ -24,9 +24,9 @@ namespace Wordroller.Tests
 
 			var paragraph1 = section.AppendParagraph();
 			paragraph1.AppendText("This is page ");
-			paragraph1.AppendCurrentPageNumber("+##");
+			paragraph1.AppendCurrentPageNumber("+##", false, true);
 			paragraph1.AppendText(" of ");
-			paragraph1.AppendNumberOfDocumentPages(NumberFormat.Decimal);
+			paragraph1.AppendNumberOfDocumentPages(NumberFormat.Decimal, false, true);
 			paragraph1.AppendText(".");
 
 			SaveTempDocument(document, "PageNumbers.docx");
