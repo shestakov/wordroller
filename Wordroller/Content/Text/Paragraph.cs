@@ -58,22 +58,22 @@ namespace Wordroller.Content.Text
 
 		public IEnumerable<Run> AppendCurrentPageNumber(string numericFormatting, bool charFormat, bool mergeFormat)
 		{
-			return AppendComplexField(FieldType.NumPages, "", $"\\# \"{numericFormatting}\"", charFormat, mergeFormat, Run.Create(" ", ParentContainer));
+			return AppendComplexField(FieldType.Page, "", $"\\# \"{numericFormatting}\"", charFormat, mergeFormat, Run.Create(" ", ParentContainer));
 		}
 
 		public IEnumerable<Run> AppendCurrentPageNumber(NumberFormat numberFormat, bool charFormat, bool mergeFormat)
 		{
-			return AppendComplexField(FieldType.NumPages, "", $"\\* {GeneralFormattingSwitchHelper.GetSwitch(numberFormat)}", charFormat, mergeFormat, Run.Create(" ", ParentContainer));
+			return AppendComplexField(FieldType.Page, "", $"\\* {GeneralFormattingSwitchHelper.GetSwitch(numberFormat)}", charFormat, mergeFormat, Run.Create(" ", ParentContainer));
 		}
 
 		public IEnumerable<Run> AppendCurrentPageNumber(CommonFieldGeneralFormatting formatting, bool charFormat, bool mergeFormat)
 		{
-			return AppendComplexField(FieldType.NumPages, "", $"\\* {GeneralFormattingSwitchHelper.GetSwitch(formatting)}", charFormat, mergeFormat, Run.Create(" ", ParentContainer));
+			return AppendComplexField(FieldType.Page, "", $"\\* {GeneralFormattingSwitchHelper.GetSwitch(formatting)}", charFormat, mergeFormat, Run.Create(" ", ParentContainer));
 		}
 
 		public IEnumerable<Run> AppendCurrentPageNumber(SpecialEastAsiaFieldGeneralFormatting formatting, bool charFormat, bool mergeFormat)
 		{
-			return AppendComplexField(FieldType.NumPages, "", $"\\* {GeneralFormattingSwitchHelper.GetSwitch(formatting)}", charFormat, mergeFormat, Run.Create(" ", ParentContainer));
+			return AppendComplexField(FieldType.Page, "", $"\\* {GeneralFormattingSwitchHelper.GetSwitch(formatting)}", charFormat, mergeFormat, Run.Create(" ", ParentContainer));
 		}
 
 		public IEnumerable<Run> AppendNumberOfDocumentPages(string numericFormatting, bool charFormat, bool mergeFormat)
