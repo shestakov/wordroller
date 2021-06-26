@@ -35,6 +35,22 @@ namespace Wordroller.Content.Tables
 			}
 		}
 
+		public void SetTableGrid(IEnumerable<int> columnWidthsTw)
+		{
+			var xName = Namespaces.w + "tblGrid";
+
+			Xml.Element(xName)?.Remove();
+
+			var tableGrid = new XElement(xName);
+
+			foreach (var c in columnWidthsTw)
+			{
+				tableGrid.Add(new XElement(Namespaces.w + "gridCol", new XAttribute(Namespaces.w + "w", c)));
+			}
+
+			Xml.Add(tableGrid);
+		}
+
 		internal static Table Create(CreateTableParameters parameters, DocumentContentContainer parent)
 		{
 			if (parameters.Rows < 1)
