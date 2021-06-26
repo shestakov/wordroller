@@ -185,6 +185,44 @@ namespace Wordroller.Content.Properties.Tables
 			}
 		}
 
+		public double? TableIndentFromLeadingMarginCm
+		{
+			get => TableIndentFromLeadingMarginTw / UnitHelper.TwipsPerCm;
+			set => TableIndentFromLeadingMarginTw = value.HasValue ? (int) (value * UnitHelper.TwipsPerCm)! : (int?) null;
+		}
+
+		public double? TableIndentFromLeadingMarginInch
+		{
+			get => TableIndentFromLeadingMarginTw / UnitHelper.TwipsPerInch;
+			set => TableIndentFromLeadingMarginTw = value.HasValue ? (int)(value * UnitHelper.TwipsPerInch)! : (int?) null;
+		}
+
+		public int? TableIndentFromLeadingMarginTw
+		{
+			get => Xml.GetTableWidthTwValue("tblInd");
+			set
+			{
+				Xml ??= CreateRootElement();
+				Xml.SetTableWidthTwValue("tblInd", value);
+			}
+		}
+
+		public double? TableIndentFromLeadingMarginPc
+		{
+			get => TableIndentFromLeadingMarginFp / UnitHelper.FipcsPerPc;
+			set => TableIndentFromLeadingMarginFp = value.HasValue ? (int) (value * UnitHelper.FipcsPerPc)! : (int?) null;
+		}
+
+		public int? TableIndentFromLeadingMarginFp
+		{
+			get => Xml.GetTableWidthFpValue("tblInd");
+			set
+			{
+				Xml ??= CreateRootElement();
+				Xml.SetTableWidthFpValue("tblInd", value);
+			}
+		}
+
 		XElement ITableBordersContainer.GetOrCreateBordersXmlElement()
 		{
 			Xml ??= CreateRootElement();
