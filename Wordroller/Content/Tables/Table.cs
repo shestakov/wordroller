@@ -37,18 +37,29 @@ namespace Wordroller.Content.Tables
 
 		public void SetTableGrid(IEnumerable<int> columnWidthsTw)
 		{
+			var xNameTablePr = XName.Get("tblPr", Namespaces.w.NamespaceName);
+			var tblPr = Xml.Element(xNameTablePr);
+
 			var xName = Namespaces.w + "tblGrid";
 
 			Xml.Element(xName)?.Remove();
 
-			var tableGrid = new XElement(xName);
+			var tblGrid = new XElement(xName);
 
 			foreach (var c in columnWidthsTw)
 			{
-				tableGrid.Add(new XElement(Namespaces.w + "gridCol", new XAttribute(Namespaces.w + "w", c)));
+				tblGrid.Add(new XElement(Namespaces.w + "gridCol", new XAttribute(Namespaces.w + "w", c)));
 			}
 
-			Xml.Add(tableGrid);
+			// Seems like LibreOffice expects tblGrid right after tblPr
+			if (tblPr != null)
+			{
+				tblPr.AddAfterSelf(tblGrid);
+			}
+			else
+			{
+				Xml.AddFirst(tblGrid);
+			}
 		}
 
 		internal static Table Create(CreateTableParameters parameters, DocumentContentContainer parent)
