@@ -48,6 +48,11 @@ namespace Wordroller.Content.Tables
 
 			int[] computedColumnWidths = columnWidths.Select(value => ComputeWidth(columnWidthUnit, value)).ToArray();
 
+			if (columnWidthUnit == WidthUnit.Pc) // Fixing the last width so the sum of Pct widths equals 5000 for LibreOffice
+			{
+				computedColumnWidths[computedColumnWidths.Length - 1] += 5000 - computedColumnWidths.Sum();
+			}
+
 			var tbl = new XElement(Namespaces.w + "tbl");
 
 			// //This code below is commented out as it does not actually impact behavior
