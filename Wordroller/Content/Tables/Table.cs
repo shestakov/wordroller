@@ -106,18 +106,20 @@ namespace Wordroller.Content.Tables
 
 		private static XElement CreateTableCell(bool perCent, int width)
 		{
+			var tcPr = new XElement(XName.Get("tcPr", Namespaces.w.NamespaceName));
+
 			var tc = new XElement
 			(
 				XName.Get("tc", Namespaces.w.NamespaceName),
-				new XElement(XName.Get("tcPr", Namespaces.w.NamespaceName)),
+				tcPr,
 				new XElement(XName.Get("p", Namespaces.w.NamespaceName),
 					new XElement(XName.Get("pPr", Namespaces.w.NamespaceName)))
 			);
 
 			if (perCent)
-				tc.SetTableWidthFpValue("tcW", width);
+				tcPr.SetTableWidthFpValue("tcW", width);
 			else
-				tc.SetTableWidthTwValue("tcW", width);
+				tcPr.SetTableWidthTwValue("tcW", width);
 
 			return tc;
 		}
