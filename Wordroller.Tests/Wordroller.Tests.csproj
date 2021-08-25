@@ -17,13 +17,10 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Resources" />
-    </ItemGroup>
-
-    <ItemGroup>
       <None Remove="Resources\Image_200x100.png" />
       <EmbeddedResource Include="Resources\Image_200x100.png" />
       <None Remove="Resources\SearchAndReplace.docx" />
+      <EmbeddedResource Include="Resources\Image_200x100_inverse.png" />
       <EmbeddedResource Include="Resources\SearchAndReplace.docx" />
     </ItemGroup>
 
