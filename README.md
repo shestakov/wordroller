@@ -42,7 +42,35 @@ Yet some possible purposes were not of high priority when creating Wordroller:
 
 You can install Wordroller [from NuGet](https://www.nuget.org/packages/Wordroller/) or build from source code.
 
-For samples, please refer to [Wordroller.Tests](https://github.com/shestakov/wordroller/tree/master/Wordroller.Tests) project for now.
+For samples, please refer to [Wordroller.Tests](https://github.com/shestakov/wordroller/tree/master/Wordroller.Tests) project.
+
+###Basic Example
+
+```
+using (var document = new WordDocument(CultureInfo.GetCultureInfo("ru-ru")))
+{
+    document.Styles.DocumentDefaults.RunProperties.Font.Ascii = "Times New Roman";
+    document.Styles.DocumentDefaults.RunProperties.Font.HighAnsi = "Arial";
+    document.Styles.DocumentDefaults.ParagraphProperties.Spacing.BetweenLinesLn = 1.5;
+
+    var section = document.Body.Sections.First();
+
+    var paragraph1 = section.AppendParagraph();
+    paragraph1.AppendText("This is the ASCII text in the default Times New Roman font");
+    paragraph1.AppendText("\n");
+    paragraph1.AppendText("А это кириллический текст другим шрифтом");
+
+    var paragraph2 = section.AppendParagraph();
+    var run2 = paragraph2.AppendText("This is a text with a font different form default");
+    run2.Properties.Font.Ascii = "Helvetica";
+
+    var path = Path.Combine(TestHelper.GetTempDirectory(), "TextDocument.docx");
+    using (var fileStream = new FileStream(path, FileMode.Create, FileAccess.Write, FileShare.Write))
+    {
+        document.Save(fileStream);
+    }
+}
+```
 
 ## Feature Comparison
 
@@ -58,7 +86,7 @@ Wordroller is a smaller library than the original DocX. While I initially intend
 - Equations
 - Bookmarks
 - Hyperlinks
-- ~~Fields~~ Basic support for complex fields had been added
+- ~~Fields~~ **Basic support for complex fields had been added**
 - Editing core properties
 - Editing custom properties
 
@@ -70,13 +98,14 @@ Wordroller is a smaller library than the original DocX. While I initially intend
 - Numbering (list definitions, actual lists, including paragraphs into lists)
 - All kinds of headers and footers
 - Basic support for styles
+- **Text search and replacement**
 - **Basic support for complex fields, primarily PAGE and NUMPAGES.**
 
 ## Q&A
 
-Q) Why version 0.1 not 1.0?
+~~Q) Why version 0.1 not 1.0?~~
 
-A) While Wordroller is already used in production environment, I suppose there is a field for improvement regarding the API to make it more friendly and comprehensible. With your feedback.
+~~A) While Wordroller is already used in production environment, I suppose there is a field for improvement regarding the API to make it more friendly and comprehensible. With your feedback.~~
 
 ---
 
