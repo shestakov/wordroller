@@ -15,19 +15,14 @@ namespace Wordroller.Tests
 		public void AddCurrentPageNumberAndNumberOfDocumentPages()
 		{
 			using var document = TestHelper.CreateNewDocument();
-
-			document.Styles.DocumentDefaults.RunProperties.Font.Ascii = "Times New Roman";
-			document.Styles.DocumentDefaults.RunProperties.Font.HighAnsi = "Arial";
-			document.Styles.DocumentDefaults.ParagraphProperties.Spacing.BetweenLinesLn = 1.5;
-
 			var section = document.Body.Sections.First();
 
-			var paragraph1 = section.AppendParagraph();
-			paragraph1.AppendText("This is page ");
-			paragraph1.AppendCurrentPageNumber("+##", false, true);
-			paragraph1.AppendText(" of ");
-			paragraph1.AppendNumberOfDocumentPages(NumberFormat.Decimal, false, true);
-			paragraph1.AppendText(".");
+			var paragraph = section.AppendParagraph();
+			paragraph.AppendText("This is page ");
+			paragraph.AppendCurrentPageNumber("+##", false, true);
+			paragraph.AppendText(" of ");
+			paragraph.AppendNumberOfDocumentPages(NumberFormat.Decimal, false, true);
+			paragraph.AppendText(".");
 
 			SaveTempDocument(document, "PageNumbers.docx");
 		}
