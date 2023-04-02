@@ -15,8 +15,10 @@ namespace Wordroller.Content.Lists
 		{
 		}
 
-		public IEnumerable<ListDefinition> ListDefinitions => XmlDocument?.Root?.Elements(Namespaces.w + "abstractNum").Select(e => new ListDefinition(e))
-															  ?? Enumerable.Empty<ListDefinition>();
+		public IEnumerable<ListDefinition> ListDefinitions =>
+			XmlDocument?.Root?.Elements(Namespaces.w + "abstractNum").Select(e => new ListDefinition(e)) ?? Enumerable.Empty<ListDefinition>();
+
+		public IEnumerable<List> Lists => XmlDocument?.Root?.Elements(Namespaces.w + "num").Select(e => new List(e)) ?? Enumerable.Empty<List>();
 
 		public ListDefinition CreateListDefinition(string name, MultiLevelType multiLevelType, string? nsid = null, string? tmpl = null, bool? restartNumberingAfterBreak = null)
 		{
@@ -74,13 +76,13 @@ namespace Wordroller.Content.Lists
 
 		private int GetMaxAbstractNumId()
 		{
-			var abstractNums = XmlDocument?.Root?.Elements(Namespaces.w + "abstractNum").ToArray() ?? new XElement[0];
+			var abstractNums = XmlDocument?.Root?.Elements(Namespaces.w + "abstractNum").ToArray() ?? Array.Empty<XElement>();
 			return abstractNums.Any() ? abstractNums.Attributes(Namespaces.w + "abstractNumId").Max(e => int.Parse(e.Value)) : 0;
 		}
 
 		private int GetMaxNumId()
 		{
-			var nums = XmlDocument?.Root?.Elements(Namespaces.w + "num").ToArray() ?? new XElement[0];
+			var nums = XmlDocument?.Root?.Elements(Namespaces.w + "num").ToArray() ?? Array.Empty<XElement>();
 			return nums.Any() ? nums.Attributes(Namespaces.w + "numId").Max(e => int.Parse(e.Value)) : 0;
 		}
 

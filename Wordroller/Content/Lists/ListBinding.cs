@@ -21,7 +21,7 @@ namespace Wordroller.Content.Lists
 			return new ListBinding(xml);
 		}
 
-		private int NumId => Xml.GetSingleElementAttributeInt("numId", "val");
+		public int NumId => Xml.GetSingleElementAttributeInt("numId", "val");
 		public int? Level => Xml.GetSingleElementAttributeIntNullable("ilvl", "val");
 	}
 }
