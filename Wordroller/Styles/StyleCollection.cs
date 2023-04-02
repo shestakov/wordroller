@@ -80,7 +80,7 @@ namespace Wordroller.Styles
 
 		public NumberingStyle GetNumberingStyle(string styleId)
 		{
-			var element = GetOrAddStyleElement(styleId, StyleType.Paragraph);
+			var element = GetOrAddStyleElement(styleId, StyleType.Numbering);
 			return new NumberingStyle(element);
 		}
 
