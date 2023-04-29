@@ -44,9 +44,9 @@ You can install Wordroller [from NuGet](https://www.nuget.org/packages/Wordrolle
 
 For samples, please refer to [Wordroller.Tests](https://github.com/shestakov/wordroller/tree/master/Wordroller.Tests) project.
 
-###Basic Example
+### Basic Example
 
-```
+```cs
 using (var document = new WordDocument(CultureInfo.GetCultureInfo("ru-ru")))
 {
     document.Styles.DocumentDefaults.RunProperties.Font.Ascii = "Times New Roman";
