@@ -152,7 +152,7 @@ namespace Wordroller.Content.Properties.Runs
 			}
 		}
 
-		public double? SpacingPt  {  get => SpacingTw / UnitHelper.TwipsPerPt;  set => SpacingTw = (int?) (value * UnitHelper.TwipsPerPt);  }
+		public double? SpacingPt { get => SpacingTw / UnitHelper.TwipsPerPt; set => SpacingTw = (int?) (value * UnitHelper.TwipsPerPt); }
 		public int? SpacingTw
 		{
 			get => Xml.GetOwnAttributeIntNullable("spacing");
@@ -168,7 +168,7 @@ namespace Wordroller.Content.Properties.Runs
 			get => Xml.GetOwnAttributeIntNullable("w");
 			set
 			{
-				if (value < 1 || value > 600) throw new ArgumentOutOfRangeException(nameof(value), value, "Scala must be between 1 and 600");
+				if (value < 1 || value > 600) throw new ArgumentOutOfRangeException(nameof(value), value, "Scale must be between 1 and 600");
 				Xml ??= CreateRootElement();
 				Xml.SetOwnAttributeIntNullable("w", value);
 			}

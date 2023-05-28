@@ -38,6 +38,16 @@ namespace Wordroller.Content.Properties.Runs
 			}
 		}
 
+		public ThemeColor? ThemeFill
+		{
+			get => Xml.GetOwnAttributeEnumNullable<ThemeColor>("themeFill");
+			set
+			{
+				Xml ??= CreateRootElement();
+				Xml.SetOwnAttributeEnumNullable("themeFill", value);
+			}
+		}
+
 		public string? ThemeTint
 		{
 			get => Xml.GetOwnAttribute("themeTint");
