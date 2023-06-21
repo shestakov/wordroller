@@ -68,12 +68,12 @@ namespace Wordroller
 		{
 			return new[]
 				{
-					1,
+					0,
 					Body.GetMaxDrawingId(),
 					FooderCollection.GetMaxDrawingId()
 					// TODO: Here go other document parts that may contain drawings
 				}
-				.Max();
+				.Max() + 1;
 		}
 	}
 }

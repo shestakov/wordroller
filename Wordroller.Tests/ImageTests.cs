@@ -17,14 +17,19 @@ namespace Wordroller.Tests
 		public void AppendImage()
 		{
 			using var document = TestHelper.CreateNewDocument();
-			using var imageStream = TestHelper.GetResourceStream("Wordroller.Tests.Resources.Image_200x100.png");
-			var image = document.AddImage(imageStream, KnownImageContentTypes.Png);
-
 			var section = document.Body.Sections.First();
-			var picture = section.WrapImageIntoInlinePicture(image, "wordroller", "This is a sample image", 200, 100);
 
-			var paragraph = section.AppendParagraph();
-			paragraph.AppendPicture(picture);
+			using var imageStream1 = TestHelper.GetResourceStream("Wordroller.Tests.Resources.Image_200x100.png");
+			var image1 = document.AddImage(imageStream1, KnownImageContentTypes.Png);
+			var picture1 = section.WrapImageIntoInlinePicture(image1, "wordroller", "This is a sample image", 200, 100);
+			var paragraph1 = section.AppendParagraph();
+			paragraph1.AppendPicture(picture1);
+
+			using var imageStream2 = TestHelper.GetResourceStream("Wordroller.Tests.Resources.Image_200x100_inverse.png");
+			var image2 = document.AddImage(imageStream2, KnownImageContentTypes.Png);
+			var picture2 = section.WrapImageIntoInlinePicture(image2, "wordroller", "This is a sample image", 200, 100);
+			var paragraph2 = section.AppendParagraph();
+			paragraph2.AppendPicture(picture2);
 
 			SaveTempDocument(document, "Image_Append.docx");
 		}
@@ -46,7 +51,8 @@ namespace Wordroller.Tests
 
 			using var readStream = new MemoryStream(documentBytes);
 			using var documentWithImage = new WordDocument(readStream);
-			var drawings = documentWithImage.Body.Content.AllParagraphsRecursive.SelectMany(p => p.Content.SelectMany(r => r.Content.OfType<RunDrawing>()));
+			var drawings = documentWithImage.Body.Content.AllParagraphsRecursive.SelectMany(p =>
+				p.Content.SelectMany(r => r.Content.OfType<RunDrawing>()));
 			var drawing = drawings.Single();
 			Assert.NotNull(drawing.InlinePicture);
 			var existingImage = drawing.InlinePicture!.Image;
@@ -71,8 +77,8 @@ namespace Wordroller.Tests
 
 			picture.Name = "WORDROLLER";
 			picture.Description = "This is an updated description";
-			picture.WidthEmu = (int) (picture.WidthEmu * 1.5);
-			picture.HeightEmu = (int) (picture.HeightEmu * 1.5);
+			picture.WidthEmu = (int)(picture.WidthEmu * 1.5);
+			picture.HeightEmu = (int)(picture.HeightEmu * 1.5);
 
 			SaveTempDocument(document, "Image_AppendAndModify.docx");
 		}

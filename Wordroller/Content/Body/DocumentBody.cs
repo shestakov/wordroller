@@ -77,7 +77,7 @@ namespace Wordroller.Content.Body
 		}
 
 		public int GetMaxDrawingId() => Xml.Descendants(Namespaces.wp + "docPr")
-			.Select(docPr => int.TryParse(docPr.Attribute(Namespaces.wp + "id")?.Value, out var id) ? id : 0)
+			.Select(docPr => int.TryParse(docPr.Attribute("id")?.Value, out var id) ? id : 0)
 			.DefaultIfEmpty()
 			.Max();
 	}

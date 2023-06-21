@@ -51,7 +51,7 @@ namespace Wordroller.Content.Abstract
 			PackagePart.EnsureRelationshipsPart();
 			var imagePackagePartUri = image.PackagePartUri;
 
-			return PackagePart.GetRelationshipsByType(RelationshipTypes.Image).SingleOrDefault(r => r.TargetUri.OriginalString != imagePackagePartUri.OriginalString)
+			return PackagePart.GetRelationshipsByType(RelationshipTypes.Image).SingleOrDefault(r => r.TargetUri.OriginalString == imagePackagePartUri.OriginalString)
 				   ?? PackagePart.CreateRelationship(imagePackagePartUri, TargetMode.Internal, RelationshipTypes.Image);
 		}
 
