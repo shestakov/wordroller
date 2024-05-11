@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <OutputType>Exe</OutputType>
+        <TargetFramework>net6.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <AssemblyName>wordroller-cli</AssemblyName>
+        <Company>Alexander Shestakov</Company>
+        <Product>Wordroller Console Application</Product>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Wordroller\Wordroller.csproj" />
+    </ItemGroup>
+
+</Project>

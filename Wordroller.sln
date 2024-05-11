@@ -6,6 +6,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wordroller.Tests", "Wordrol
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wordroller.StandardStyles", "Wordroller.StandardStyles\Wordroller.StandardStyles.csproj", "{AC42607A-BF02-4AC8-90E3-16738124A619}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wordroller.Apps.Console", "Wordroller.Apps.Console\Wordroller.Apps.Console.csproj", "{0AFEC9F3-C310-4961-84F2-4C9FD60A765F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,5 +26,9 @@ Global
 		{AC42607A-BF02-4AC8-90E3-16738124A619}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AC42607A-BF02-4AC8-90E3-16738124A619}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AC42607A-BF02-4AC8-90E3-16738124A619}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0AFEC9F3-C310-4961-84F2-4C9FD60A765F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0AFEC9F3-C310-4961-84F2-4C9FD60A765F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0AFEC9F3-C310-4961-84F2-4C9FD60A765F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0AFEC9F3-C310-4961-84F2-4C9FD60A765F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
