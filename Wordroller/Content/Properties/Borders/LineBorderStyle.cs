@@ -12,7 +12,6 @@ namespace Wordroller.Content.Properties.Borders
 	public enum LineBorderStyle
 	{
 		None = 0,
-		Nil,
 		Single = 1,
 		Thick = 2,
 		Double = 3,
@@ -37,6 +36,7 @@ namespace Wordroller.Content.Properties.Borders
 		ThreeDEmboss = 22,
 		ThreeDEngrave = 23,
 		Outset = 24,
-		Inset = 25
+		Inset = 25,
+		Nil = 26
 	}
 }
