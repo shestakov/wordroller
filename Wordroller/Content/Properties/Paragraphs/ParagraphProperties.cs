@@ -11,7 +11,7 @@ using Wordroller.Utility.Xml;
 
 namespace Wordroller.Content.Properties.Paragraphs
 {
-	public class ParagraphProperties : OptionalXmlElementWrapper, IRunPropertiesContainer, IParagraphBordersContainer, IParagraphSpacingContainer, IParagraphIndentationContainer,
+	public class ParagraphProperties : OptionalXmlElementWrapper, IRunPropertiesContainer, IParagraphBordersContainer, IParagraphSpacingContainer, IParagraphShadingContainer, IParagraphIndentationContainer,
 		ITabStopsContainer
 	{
 		private readonly IParagraphPropertiesContainer container;
@@ -59,6 +59,8 @@ namespace Wordroller.Content.Properties.Paragraphs
 		public RunProperties ParagraphMarkProperties => new RunProperties(this, Xml?.Element(Namespaces.w + "rPr"));
 
 		public ParagraphBorders Borders => new ParagraphBorders(this, Xml?.Element(Namespaces.w + "pBdr"));
+
+		public ParagraphShading Shading => new ParagraphShading(this, Xml?.Element(Namespaces.w + "shd"));
 
 		public ParagraphSpacing Spacing => new ParagraphSpacing(this, Xml?.Element(Namespaces.w + "spacing"));
 
@@ -217,6 +219,17 @@ namespace Wordroller.Content.Properties.Paragraphs
 		{
 			Xml ??= CreateRootElement();
 			var xName = XName.Get("spacing", Namespaces.w.NamespaceName);
+			var spacing = Xml.Element(xName);
+			if (spacing != null) return spacing;
+			spacing = new XElement(xName);
+			Xml.Add(spacing);
+			return spacing;
+		}
+
+		XElement IParagraphShadingContainer.GetOrCreateShadingXmlElement()
+		{
+			Xml ??= CreateRootElement();
+			var xName = XName.Get("shd", Namespaces.w.NamespaceName);
 			var spacing = Xml.Element(xName);
 			if (spacing != null) return spacing;
 			spacing = new XElement(xName);
