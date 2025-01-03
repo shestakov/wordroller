@@ -4,11 +4,12 @@ using Wordroller.Content.Abstract;
 using Wordroller.Content.Properties.Fonts;
 using Wordroller.Utility;
 using Wordroller.Utility.Xml;
+using Wordroller.Content.Properties.Borders;
 
 namespace Wordroller.Content.Properties.Runs
 {
-	public class RunProperties : OptionalXmlElementWrapper, IRunColorContainer, IRunUnderlineContainer, IFontSettingsContainer, IRunLanguageContainer
-	{
+	public class RunProperties : OptionalXmlElementWrapper, IRunColorContainer, IRunUnderlineContainer, IFontSettingsContainer, IRunLanguageContainer, IRunShadingContainer, IBorderElementContainer
+    {
 		private readonly IRunPropertiesContainer container;
 
 		internal RunProperties(IRunPropertiesContainer container, XElement? xml) : base(xml)
@@ -120,6 +121,10 @@ namespace Wordroller.Content.Properties.Runs
 
 		public RunUnderline Underline => new RunUnderline(this, Xml?.Element(XName.Get("u", Namespaces.w.NamespaceName)));
 
+		public RunShading Shading => new RunShading(this, Xml?.Element(XName.Get("shd", Namespaces.w.NamespaceName)));
+
+		public RunBorder Border => new RunBorder(this, Xml?.Element(Namespaces.w + "bdr"));
+		
 		public HighlightColor? HighlightColor
 		{
 			get => Xml?.GetSingleElementAttributeEnumNullable<HighlightColor>("highlight", "val");
@@ -290,6 +295,28 @@ namespace Wordroller.Content.Properties.Runs
 		{
 			Xml ??= CreateRootElement();
 			var xName = XName.Get("lang", Namespaces.w.NamespaceName);
+			var spacing = Xml.Element(xName);
+			if (spacing != null) return spacing;
+			spacing = new XElement(xName);
+			Xml.Add(spacing);
+			return spacing;
+		}
+
+		XElement IRunShadingContainer.GetOrCreateShadingXmlElement()
+		{
+			Xml ??= CreateRootElement();
+			var xName = XName.Get("shd", Namespaces.w.NamespaceName);
+			var spacing = Xml.Element(xName);
+			if (spacing != null) return spacing;
+			spacing = new XElement(xName);
+			Xml.Add(spacing);
+			return spacing;
+		}
+
+		XElement IBorderElementContainer.GetOrCreateBorderXmlElement(string elementName = "bdr")
+		{
+			Xml ??= CreateRootElement();
+			var xName = XName.Get(elementName, Namespaces.w.NamespaceName);
 			var spacing = Xml.Element(xName);
 			if (spacing != null) return spacing;
 			spacing = new XElement(xName);

@@ -20,6 +20,7 @@ namespace Wordroller.Content.Properties.Borders
 			"right",
 			"between",
 			"bar",
+			"bdr",
 			"insideH",
 			"insideV",
 			"tl2br",
