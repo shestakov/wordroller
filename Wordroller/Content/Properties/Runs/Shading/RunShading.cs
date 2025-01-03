@@ -3,7 +3,7 @@ using System.Xml.Linq;
 using Wordroller.Content.Abstract;
 using Wordroller.Utility.Xml;
 
-namespace Wordroller.Content.Properties
+namespace Wordroller.Content.Properties.Runs.Shading
 {
 	public class RunShading : OptionalXmlElementWrapper
 	{

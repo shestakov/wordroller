@@ -5,6 +5,7 @@ using Wordroller.Content.Properties.Fonts;
 using Wordroller.Utility;
 using Wordroller.Utility.Xml;
 using Wordroller.Content.Properties.Borders;
+using Wordroller.Content.Properties.Runs.Shading;
 
 namespace Wordroller.Content.Properties.Runs
 {

@@ -4,6 +4,7 @@ using Wordroller.Content.Abstract;
 using Wordroller.Content.Lists;
 using Wordroller.Content.Properties.Borders;
 using Wordroller.Content.Properties.Paragraphs.Indentation;
+using Wordroller.Content.Properties.Paragraphs.Shading;
 using Wordroller.Content.Properties.Paragraphs.Spacing;
 using Wordroller.Content.Properties.Paragraphs.TabStops;
 using Wordroller.Content.Properties.Runs;
